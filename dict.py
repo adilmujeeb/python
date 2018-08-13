@@ -22,16 +22,18 @@ def translate(w):
         yn = input("Did you mean %s instead? Enter Y if yes or N if no:" % get_close_matches(w, data.keys())[0])
         if yn.lower() == "y":
             return data[get_close_matches(w, data.keys())[0]]
+        elif yn.lower() == "n":
+            return "The word %s doesn't exist. Please double check it." % w
         else:
-           return ("Word not found") 
+           return ("We didn't understand your entry.") 
     else:
-        return ("Word not found")
+        return "The word %s doesn't exist. Please double check it." % w
 
 word = input("Enter word:")
 
 out = translate(word)
 
-if type(out)==list:
+if type(out) == list:
     for i in out:
         print(i)
 else:
